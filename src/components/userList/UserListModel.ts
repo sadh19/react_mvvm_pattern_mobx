@@ -4,21 +4,14 @@ import User from "../../models/User";
 
 class UserListModel {
 
-    private static userListModel: UserListModel;
     userList: User[] = [] as User[];
-    message: string = 'Mensaje desde el modelo';
 
     private constructor() {
         makeAutoObservable(this);
     }
 
     static getInstance () {
-
-        if (this.userListModel === null || this.userListModel === undefined) {
-            this.userListModel = new UserListModel();
-        }
-
-        return this.userListModel;
+        return new UserListModel();
     }
 
     loadUsers () {
@@ -31,10 +24,12 @@ class UserListModel {
             });
     }
 
-
-    setMessage (newMessage: string) {
-        this.message = newMessage;
+    removeUser (id: number) {
+        this.userList = this.userList.filter(x => x.id !== id);
     }
+
+
+
 
 }
 

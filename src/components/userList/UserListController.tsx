@@ -10,7 +10,7 @@ const UserListController = ({
 }) => {
   return (
     <React.Fragment>
-      <UserListView users={viewModel.getUsers()} />
+      <UserListView viewModel={viewModel} />
     </React.Fragment>
   );
 };

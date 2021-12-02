@@ -1,12 +1,19 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import User from '../../models/User';
+import UserListViewModel from './UserListViewModel';
 
-const UserListView = ({ users }: { users: User[] }) => {
+const UserListView = ({ viewModel }: { viewModel: UserListViewModel }) => {
   return (
     <React.Fragment>
-      {users.map((x) => (
-        <div key={x.id}>{x.name}</div>
+      {viewModel.getUsers().map((x) => (
+        <div
+          key={x.id}
+          onClick={() => {
+            viewModel.removeUser(x.id);
+          }}
+        >
+          {x.name}
+        </div>
       ))}
     </React.Fragment>
   );

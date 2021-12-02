@@ -26,6 +26,11 @@ class UserListViewModel {
         return this.userListModel.userList;
     }
 
+    removeUser (id: number) {
+        //@ts-ignore
+        this.userListModel.removeUser(id);
+    }
+
 
 
 
